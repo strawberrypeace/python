@@ -1,0 +1,56 @@
+# Voting Program Task
+
+# Write a function called getVote()
+
+# It should allow one of the following entries: A, B, C or END
+# It should validate user input to only allow one of these options or else print an error message and ask for an input again
+# It should return the validated response
+# TEST your function. Extend your function so that it will accept either upper or lower case data entry (i.e. perform some input sanitization).
+
+# Write a procedure called holdElection()
+
+# You should call the function getVote() and store its result in a variable.
+# You should update the variables values for (e.g.) aTot, bTot, cTot according to how a vote was cast (i.e. Candidate A, B or C).
+# This should continue until getVote() has returned END.
+# Return the candidates’ totals in a list (assume A, then B, then C)  
+# TEST your procedure.
+# Write a procedure called presentResults(votesList)
+
+# This procedure should assume VotesList has 3 values for A, B and C 
+# It should print out suitable messages for:
+# The total each candidate a,b and c scored
+# The total number of votes cast
+# TEST your procedure e.g. call it with presentResults([10,5,3]) and check the output.
+
+# Finally, write the main program.  This should just call holdElection() and then call presentResults(votes) with the result of the holdElection() call.
+
+def getVote():
+  vote=input("Vote for a candidate in the election, either A, B, C ")
+  if vote=="A" or vote=="B" or vote=="C" or vote=="END":
+    return vote
+  else:
+    print("Error: please make sure you have entered either capital letter A, B, C")
+
+def holdElection():
+  atot=btot=ctot=0
+  while True:
+    validated_vote=getVote()
+    if validated_vote=="A":
+      atot+=1
+    elif validated_vote=="B":
+      btot+=1
+    elif validated_vote=="C":
+      ctot+=1
+    elif validated_vote=="END":
+      return [int(atot),int(btot),int(ctot)]
+
+def presentResults(votesList):
+  [atot,btot,ctot]=votesList
+  tot_votes=sum(votesList)
+  print(f"The total number of votes for candidate A={atot}")
+  print(f"The total number of votes for candidate B={btot}")
+  print(f"The total number of votes for candidate C={ctot}")
+  print(f"The total number of votes in this election={tot_votes}")
+
+store=holdElection()
+presentResults(store)
