@@ -1,0 +1,91 @@
+# String tasks 
+
+# For a given string, write a function countC(s) which takes a string, in this case called s, and returns the number of times the capital letter C appears in it. E.g. 
+# print(countC("This list has only one capital C in it")) should print out the answer 1. 
+# print(countC("But this has all lower case cs in it, no capitals")) should print out 0 (there are several instances of lower case c, though.) 
+# Generalise your answer to question 1, count(s, c) which takes a string and a character and returns the number of time that character appears
+# print(count("Hello World", 'l')) should print 3.  
+# Write a function, sumthedigits(i) that takes an integer and returns the sum of its digits.  
+# print(sumthedigits(12345)) should print 15   
+# print(sumthedigits(234545)) should print 23 
+
+# String/List functions 
+
+# In the example code above you can see how to change a string into a list of characters, write a function list_to_string(listOfCharacters) which takes a list of characters and returns them all joined together to make a string. 
+# E.g. print(list_to_string(['h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd'])) should print out, hello world. 
+# For a given list, write a function to return a new list in reverse order of the original - reverse(x) 
+# print(reverse([5,4,1,2,True)) should print [True, 2, 1, 4, 5]
+# Can you create a function (perhaps using your function from questions 3 and 4) called reverse_string(original) that will return a string that is the reverse of the original. 
+# print(reverse_string("hello")) should print olleh
+# For a given list of numbers write a function even_numbers(x) which will return a new list of only the even numbers (if the item is not a number, ignore it and don’t print anything) 
+# For a given string write a function every_other_character(st, b) which takes a boolean and will return a new string made of only the even numbered locations if the boolean is true, otherwise all the odd numbered locations.
+
+def countC(s):
+  appearances=0
+  for i in s:
+    if i=="C":
+      appearances+=1
+  print(appearances)
+
+countC("CCCC")
+
+def count(s,c):
+  appearances=0
+  for i in s:
+    if i==c:
+      appearances+=1
+  print(appearances)
+
+count("scscscscscsc","s")
+
+def sumthedigits(i):
+  inti=str(i)
+  sum_digits=0
+  for e in inti:
+    sum_digits+=int(e)
+  print(sum_digits)
+
+sumthedigits(12345)
+
+def list_to_string(listOfCharacters):
+  string=""
+  for item in listOfCharacters:
+    string+=item
+  print(string)
+
+list_to_string(["q","w","e","r","t","y"])
+
+def reverse(x):
+  x=x[::-1]
+  print(x)
+
+reverse([1,2,3,4,5])
+
+def reverse_string(original):
+  original=original[::-1]
+  print(original)
+
+reverse_string("qwerty")
+
+def even_numbers(x):
+  wanted=[]
+  for number in x:
+    if number%2==0:
+      wanted.append(number)
+  print(wanted)
+
+even_numbers([1,2,3,4,5,6,7,8,9,10])
+
+def every_other_character(st, b):
+  newstring=""
+  if b==True:
+    for i in range(len(st)):
+      if i%2==0:
+        newstring+=st[i]
+  if b==False:
+    for i in range(len(st)):
+      if i%2==1:
+        newstring+=st[i]
+  print(newstring)
+        
+every_other_character("qwertyuiop", False)
